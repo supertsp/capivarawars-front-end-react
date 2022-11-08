@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
 
 //Import Globlas & Tools
 import Globals from "../../Globals";
 import Validator from '../../tool/Validator';
 import AxiosRest from '../../tool/AxiosRest';
+import withRouter from "../../withRouter";
 
 //Import GameCore
 import Player from '../../gamecore/Player';
@@ -12,6 +12,8 @@ import Player from '../../gamecore/Player';
 //Import Components
 import Header from '../components/Header';
 
+//Import Images
+import imgLoading from '../assets/images/loading.svg'
 
 class Loading extends Component {
 
@@ -25,8 +27,7 @@ class Loading extends Component {
 
                 <div className="container-area-loading">
 
-                    <img src={require('../assets/images/loading.svg')}
-                        className="" alt="loading icon" />
+                    <img src={imgLoading} className="" alt="loading icon" />
 
                 </div>
 

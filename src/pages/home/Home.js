@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
 
 //Import Globlas & Tools
 import Globals from "../../Globals";
 import Validator from '../../tool/Validator';
 import AxiosRest from '../../tool/AxiosRest';
 import PushNotification from "../../tool/PushNotification";
+import withRouter from "../../withRouter";
 
 //Import GameCore
 import Player from '../../gamecore/Player';
@@ -13,6 +13,10 @@ import Player from '../../gamecore/Player';
 //Import Pages
 import Header from '../components/Header';
 import IconCapybara from '../components/IconCapybara';
+
+//Import Images
+import borderBambooTitle from '../assets/images/borderbambootitle.svg'
+import imgButtonPlay from '../assets/images/buttonplay.svg'
 
 class Home extends Component {
 
@@ -88,7 +92,7 @@ class Home extends Component {
                     <div className="container-bamboo-home-item-game">
 
                         <div className="container-bamboo-title">
-                            <img src={require('../assets/images/borderbambootitle.svg')} alt="título da área de conteúdo" />
+                            <img src={borderBambooTitle} alt="título da área de conteúdo" />
                             <span>Game</span>
                         </div>
 
@@ -99,7 +103,7 @@ class Home extends Component {
 
 
                                 <button onClick={this.onClickPlay} className="form-button-play">
-                                    <img src={require('../assets/images/buttonplay.svg')} alt="button play image" />
+                                    <img src={imgButtonPlay} alt="button play image" />
                                 </button>
 
                             </form>
@@ -109,7 +113,7 @@ class Home extends Component {
                     <div className="container-bamboo-home-item-status">
 
                         <div className="container-bamboo-title">
-                            <img src={require('../assets/images/borderbambootitle.svg')} alt="título da área de conteúdo" />
+                            <img src={borderBambooTitle} alt="título da área de conteúdo" />
                             <span>Status</span>
                         </div>
 

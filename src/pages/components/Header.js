@@ -9,11 +9,36 @@ import AxiosRest from '../../tool/AxiosRest';
 //Import GameCore
 import Player from '../../gamecore/Player';
 
+//Import Images
+import capivaralogo from '../assets/images/capivaralogo.svg'
+import userIconYoshi from '../assets/images/user-yoshi-icon.svg'
+import userIconMale from '../assets/images/user-male-icon.svg'
+import userIconFemale from '../assets/images/user-female-icon.svg'
+import userIconEnemy from '../assets/images/user-enemy-icon.svg'
+
 
 export default class Header extends Component {
 
     constructor(props) {
         super(props);
+    }
+
+    getUserIconByPropsUserType = (userTypeText) => {
+        userTypeText = this.props.userNick === 'tiago' ? 'Y' : userTypeText;
+        
+        switch (userTypeText) {
+            case "Y":
+                return userIconYoshi
+
+            case "M":
+                return userIconMale
+
+            case "F":
+                return userIconFemale
+          
+            default:
+                return userIconEnemy
+        }
     }
 
     render() {
@@ -23,7 +48,7 @@ export default class Header extends Component {
         return (
             <div>
                 <div id="logo-inicial">
-                    <img src={require('../assets/images/capivaralogo.svg')} alt="logo capivara wars" />
+                    <img src={capivaralogo} alt="logo capivara wars" />
                 </div>
 
                 {
@@ -33,16 +58,7 @@ export default class Header extends Component {
                             {this.props.userNick}
                         </div>
                         <div>
-                            {
-                                this.props.userNick === 'tiago' ?
-                                    <img src={require('../assets/images/user-yoshi-icon.svg')} alt="user foto" /> :
-                                    this.props.userType === 'M' ?
-                                        <img src={require('../assets/images/user-male-icon.svg')} alt="user foto" /> :
-                                        this.props.userType === 'F' ?
-                                            <img src={require('../assets/images/user-female-icon.svg')} alt="user foto" /> :
-                                            <img src={require('../assets/images/user-enemy-icon.svg')} alt="user foto" />
-                            }
-
+                            <img src={this.getUserIconByPropsUserType(this.props.userType)} alt="user foto" />
                         </div>
                         <div>
                             <Link to="/">

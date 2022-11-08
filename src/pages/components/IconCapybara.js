@@ -9,6 +9,18 @@ import AxiosRest from '../../tool/AxiosRest';
 //Import GameCore
 import Player from '../../gamecore/Player';
 
+//Import Images
+import capiiBrown from '../assets/images/capii-icon-brown.svg'
+import capiiBlue from '../assets/images/capii-icon-blue.svg'
+import capiiGreen from '../assets/images/capii-icon-green.svg'
+import capiiRed from '../assets/images/capii-icon-red.svg'
+import capiiYellow from '../assets/images/capii-icon-yellow.svg'
+import capiiPurple from '../assets/images/capii-icon-purple.svg'
+import capiiPink from '../assets/images/capii-icon-pink.svg'
+import capiiBlack from '../assets/images/capii-icon-black.svg'
+import capiiWhite from '../assets/images/capii-icon-white.svg'
+import capiiHotdog from '../assets/images/capii-icon-hotdog.svg'
+
 
 export default class IconCapybara extends Component {
 
@@ -16,33 +28,48 @@ export default class IconCapybara extends Component {
         super(props);
     }
 
+    getImageByPropsTextColor = (text) => {
+        switch (text) {
+            case "brown":
+                return capiiBrown
+        
+            case "blue":
+                return capiiBlue
+        
+            case "green":
+                return capiiGreen
+        
+            case "red":
+                return capiiRed
+        
+            case "yellow":
+                return capiiYellow
+        
+            case "purple":
+                return capiiPurple
+        
+            case "pink":
+                return capiiPink
+        
+            case "black":
+                return capiiBlack
+        
+            case "white":
+                return capiiWhite
+        
+            case "hotdog":
+                return capiiHotdog
+                
+            default:
+                return capiiBrown
+        }
+    }
+
     render() {
         return (
             <span>
 
-                <img src={
-                    this.props.color === 'brown' ?
-                        require('../assets/images/capii-icon-brown.svg') :
-                        this.props.color === 'green' ?
-                            require('../assets/images/capii-icon-green.svg') :
-                            this.props.color === 'blue' ?
-                                require('../assets/images/capii-icon-blue.svg') :
-                                this.props.color === 'red' ?
-                                    require('../assets/images/capii-icon-red.svg') :
-                                    this.props.color === 'yellow' ?
-                                        require('../assets/images/capii-icon-yellow.svg') :
-                                        this.props.color === 'purple' ?
-                                            require('../assets/images/capii-icon-purple.svg') :
-                                            this.props.color === 'pink' ?
-                                                require('../assets/images/capii-icon-pink.svg') :
-                                                this.props.color === 'black' ?
-                                                    require('../assets/images/capii-icon-black.svg') :
-                                                    this.props.color === 'white' ?
-                                                        require('../assets/images/capii-icon-white.svg') :
-                                                        this.props.color === 'hotdog' ?
-                                                            require('../assets/images/capii-icon-hotdog.svg') :
-                                                            require('../assets/images/capii-icon-brown.svg')
-                }
+                <img src={this.getImageByPropsTextColor(this.props.color)}
                     className={this.props.specialClass} alt="capivara icon" />
 
             </span>

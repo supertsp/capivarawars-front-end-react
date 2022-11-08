@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
 
 //Import Globlas & Tools
 import Globals from "../../Globals";
 import Validator from '../../tool/Validator';
 import AxiosRest from '../../tool/AxiosRest';
 import PushNotification from "../../tool/PushNotification";
+import withRouter from "../../withRouter";
 
 //Import GameCore
 import Player from '../../gamecore/Player';
 
 //Import Pages
 import Header from '../components/Header';
+
+//Import Images
+import borderBambooTitle from '../assets/images/borderbambootitle.svg'
+import userIconYoshi from '../assets/images/user-yoshi-icon.svg'
+import userIconMale from '../assets/images/user-male-icon.svg'
+import userIconFemale from '../assets/images/user-female-icon.svg'
+import userIconEnemy from '../assets/images/user-enemy-icon.svg'
 
 class MoveBoat extends Component {
 
@@ -113,6 +120,22 @@ class MoveBoat extends Component {
         this.setState({ posicaoEscolhida: posicaoTemp });
     }
 
+    getCurrentPlayerIconByGender = (textGender) => {
+        switch (textGender) {
+            case "Y":
+                return userIconYoshi
+
+            case "M":
+                return userIconMale
+
+            case "F":
+                return userIconFemale
+
+            default:
+                return userIconEnemy
+        }
+    }
+
     render() {
         return (
             <div>
@@ -122,7 +145,7 @@ class MoveBoat extends Component {
                 <div className="container-area-moveboat">
 
                     <div className="container-bamboo-title">
-                        <img src={require('../assets/images/borderbambootitle.svg')} alt="título da área de conteúdo" />
+                        <img src={borderBambooTitle} alt="título da área de conteúdo" />
                         <span>Move</span>
                     </div>
 
@@ -174,13 +197,7 @@ class MoveBoat extends Component {
                             <div className="statistics-area">
 
                                 <div className="current-player-icon">
-                                    {
-                                        Globals.getJogadorLogado().getGender() === 'M' ?
-                                            <img src={require('../assets/images/user-male-icon.svg')} alt="user foto" /> :
-                                            Globals.getJogadorLogado().getGender() === 'F' ?
-                                                <img src={require('../assets/images/user-female-icon.svg')} alt="user foto" /> :
-                                                <img src={require('../assets/images/user-enemy-icon.svg')} alt="user foto" />
-                                    }
+                                    <img src={this.getCurrentPlayerIconByGender(Globals.getJogadorLogado().getGender())} alt="user foto" />
                                 </div>
 
                                 <div className="current-area-boat">

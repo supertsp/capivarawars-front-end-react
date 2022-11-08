@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 //Import Globlas & Tools
 import Globals from "../../Globals";
 import Validator from '../../tool/Validator';
 import AxiosRest from '../../tool/AxiosRest';
 import PushNotification from "../../tool/PushNotification";
+import withRouter from "../../withRouter";
 
 //Import GameCore
 import Player from '../../gamecore/Player';
@@ -13,6 +14,10 @@ import Player from '../../gamecore/Player';
 //Import Pages
 import Header from '../components/Header';
 import IconCapybara from '../components/IconCapybara';
+
+//Import Images
+import borderBambooTitle from '../assets/images/borderbambootitle.svg'
+
 
 class MatchResult extends Component {
 
@@ -98,7 +103,7 @@ class MatchResult extends Component {
                     <div className="container-bamboo-matchresult">
 
                         <div className="container-bamboo-title">
-                            <img src={require('../assets/images/borderbambootitle.svg')} alt="título da área de conteúdo" />
+                            <img src={borderBambooTitle} alt="título da área de conteúdo" />
                             <span>Match Result</span>
                         </div>
 

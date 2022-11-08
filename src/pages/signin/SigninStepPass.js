@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 //Import Globlas & Tools
 import Globals from "../../Globals";
 import Validator from '../../tool/Validator';
 import AxiosRest from '../../tool/AxiosRest';
+import withRouter from "../../withRouter";
 
 //Import GameCore
 import Player from '../../gamecore/Player';

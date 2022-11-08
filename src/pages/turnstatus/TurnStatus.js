@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
 
 //Import Globlas & Tools
 import Globals from "../../Globals";
 import Validator from '../../tool/Validator';
 import AxiosRest from '../../tool/AxiosRest';
 import PushNotification from "../../tool/PushNotification";
+import withRouter from "../../withRouter";
 
 //Import GameCore
 import Player from '../../gamecore/Player';
@@ -13,6 +13,13 @@ import Player from '../../gamecore/Player';
 //Import Pages
 import Header from '../components/Header';
 import IconCapybara from '../components/IconCapybara';
+
+//Import Images
+import borderBambooTitle from '../assets/images/borderbambootitle.svg'
+import userIconYoshi from '../assets/images/user-yoshi-icon.svg'
+import userIconMale from '../assets/images/user-male-icon.svg'
+import userIconFemale from '../assets/images/user-female-icon.svg'
+import userIconEnemy from '../assets/images/user-enemy-icon.svg'
 
 
 class TurnStatus extends Component {
@@ -92,6 +99,22 @@ class TurnStatus extends Component {
         this.setState({ posicaoEscolhida: event.target.value });
     }
 
+    getCurrentPlayerIconByGender = (textGender) => {
+        switch (textGender) {
+            case "Y":
+                return userIconYoshi
+
+            case "M":
+                return userIconMale
+
+            case "F":
+                return userIconFemale
+
+            default:
+                return userIconEnemy
+        }
+    }
+
     render() {
         return (
             <div>
@@ -101,7 +124,7 @@ class TurnStatus extends Component {
                 <div className="container-area-turnstatus">
 
                     <div className="container-bamboo-title">
-                        <img src={require('../assets/images/borderbambootitle.svg')} alt="título da área de conteúdo" />
+                        <img src={borderBambooTitle} alt="título da área de conteúdo" />
                         <span>Turn Status</span>
                     </div>
 
@@ -114,13 +137,7 @@ class TurnStatus extends Component {
                                 <tbody>
                                     <tr>
                                         <td colSpan="2" className="turn-status-table-title">
-                                            {
-                                                Globals.getJogadorLogado().getGender() === 'M' ?
-                                                    <img src={require('../assets/images/user-male-icon.svg')} alt="user foto" /> :
-                                                    Globals.getJogadorLogado().getGender() === 'F' ?
-                                                        <img src={require('../assets/images/user-female-icon.svg')} alt="user foto" /> :
-                                                        <img src={require('../assets/images/user-enemy-icon.svg')} alt="user foto" />
-                                            }
+                                            <img src={this.getCurrentPlayerIconByGender(Globals.getJogadorLogado().getGender())} alt="user foto" />
                                             &nbsp;
                                             <span className="turn-status-table-title-nick">
                                                 {Globals.getJogadorLogado().getNick()}
@@ -131,13 +148,7 @@ class TurnStatus extends Component {
                                             &nbsp;
                                         </td>
                                         <td colSpan="2" className="turn-status-table-title">
-                                            {
-                                                Globals.getJogadorInimigo(0).getGender() === 'M' ?
-                                                    <img src={require('../assets/images/user-male-icon.svg')} alt="user foto" /> :
-                                                    Globals.getJogadorInimigo(0).getGender() === 'F' ?
-                                                        <img src={require('../assets/images/user-female-icon.svg')} alt="user foto" /> :
-                                                        <img src={require('../assets/images/user-enemy-icon.svg')} alt="user foto" />
-                                            }
+                                            <img src={this.getCurrentPlayerIconByGender(Globals.getJogadorInimigo(0).getGender())} alt="user foto" />
                                             &nbsp;
                                             <span className="turn-status-table-title-nick">
                                                 {Globals.getJogadorInimigo(0).getNick()}
